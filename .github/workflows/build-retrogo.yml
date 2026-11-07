@@ -1,0 +1,31 @@
+name: Build Retro-Go
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer les outils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi python3 make
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Installer nwlink
+        run: npm install -g nwlink@1.0.0
+
+      - name: Compiler Retro-Go
+        working-directory: games/retrogo
+        run: make ROMS="SRB2Gen.md"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retrogo
+          path: games/retrogo/output/retrogo.nwa
