@@ -23,7 +23,7 @@ jobs:
 
       - name: Compiler Retro-Go
         working-directory: games/retrogo
-        run: make ROMS="FIFA International Soccer (USA, Europe) (En,Fr,De,Es).md"
+        run: make ROMS="FIFAInternationalSoccer.md"
 
       - uses: actions/upload-artifact@v4
         with:
