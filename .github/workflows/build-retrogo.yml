@@ -23,7 +23,7 @@ jobs:
 
       - name: Compiler Retro-Go
         working-directory: games/retrogo
-        run: make ROMS="FIFAInternationalSoccer.md"
+        run: make ROMS="SonicTheHedgehog2.md"
 
       - uses: actions/upload-artifact@v4
         with:
